@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -26,13 +27,8 @@ public class MainActivity extends AppCompatActivity {
     //Editacleの宣言
     Editable editable;
 
-    //AlertDialogの宣言
-    //AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
     //格納する変数の宣言
     private int NumA,NumB;
-
-
 
     //Edittext内の数値を取得し、結果を表示するクラス
     public class GeneralgetEditText {
@@ -46,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         public void getEditText(Button btn){
             //どちらかのEditTextに数字が入力されていない場合
             if ((editTextA.getText().toString().equals("")) || (editTextB.getText().toString().equals(""))){
-
+                //数値が入力されていなかった場合、メッセージを表示する
+                Toast.makeText(getApplicationContext(),"数値を入力してください。",Toast.LENGTH_SHORT).show();
             }
             //両方のEditTextに数字を入力している場合
             else{
@@ -59,18 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
                 //ボタンの文字列に応じて、表示する内容を決める
                 switch ((String)btn.getText().toString()){
+                    //＋ボタンの場合
                     case "＋":
                         textViewB.setText("=" + (NumA+NumB) + "です。");
                         break;
+                    //ーボタンの場合
                     case "―":
                         textViewB.setText("=" + (NumA-NumB) + "です。");
                         break;
+                    //×ボタンの場合
                     case "×":
                         textViewB.setText("=" + (NumA*NumB) + "です。");
                         break;
+                    //÷ボタンの場合
                     case "÷":
                         textViewB.setText("=" + (NumA/NumB) + "です。");
                         break;
+                    //それ以外　※今回は設定していない
                     default:
                         break;
                 }
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         btnWa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //変数の取得 クラス中のメソッドを呼び出す
+                //数値の取得および結果表示 クラス中のメソッドを呼び出す
                 generalgetEditText.getEditText(btnWa);
             }
         });
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         btnSa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //変数の取得 クラス中のメソッドを呼び出す
+                //数値の取得および結果表示
                 generalgetEditText.getEditText(btnSa);
             }
         });
@@ -126,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         btnSk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //変数の取得 クラス中のメソッドを呼び出す
+                //数値の取得および結果表示
                 generalgetEditText.getEditText(btnSk);;
              }
         });
@@ -135,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         btnSh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //変数の取得 クラス中のメソッドを呼び出す
+                //数値の取得およぎ結果表示
                 generalgetEditText.getEditText(btnSh);
             }
         });
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         btnRe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //リセットボタンをクリックされた時は、EdittextとTextviewの文字をもとに戻す。
                 editTextA.setText("");
                 editTextB.setText("");
                 textViewA.setText("?");
