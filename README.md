@@ -2,4 +2,6 @@
 
 # ShisokuEnzanProject
 
+# member
+
 *testmember
