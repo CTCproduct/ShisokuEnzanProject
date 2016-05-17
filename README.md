@@ -1,5 +1,5 @@
 # ShisokuEnzanProject
 
-＃＃メンバー
+##メンバー
 
-＊testmember
+*testmember
