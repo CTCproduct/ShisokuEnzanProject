@@ -1,5 +1,5 @@
 # ShisokuEnzanProject
 
-# ƒƒ“ƒo[
+# ShisokuEnzanProject
 
 *testmember
