@@ -16,13 +16,13 @@ public class GeneralgetEditText extends AppCompatActivity {
     //EditText内の数値を取得、結果を表示するメソッド
     public void getEditText(Button btn,EditText edtxta,EditText edtxtb,TextView txtva,TextView txtvb) {
 
-        int NumA, NumB;
+        Long NumA, NumB;
         Editable editable;
 
         editable = edtxta.getText();
-        NumA = Integer.parseInt(editable.toString());
+        NumA = Long.parseLong(editable.toString());
         editable = edtxtb.getText();
-        NumB = Integer.parseInt(editable.toString());
+        NumB = Long.parseLong(editable.toString());
 
         //ボタンの文字列に応じて表示方法を決める
         switch (btn.getText().toString()) {

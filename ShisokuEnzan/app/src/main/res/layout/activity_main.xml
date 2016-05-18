@@ -16,10 +16,12 @@
             android:id="@+id/editTextA"
             android:textSize="15pt"
             android:layout_weight="1"
+            android:maxLength="10"
             android:gravity="center"
             android:layout_width="10pt"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:hint="数字①"
             android:text=""/>
 
         <TextView
@@ -35,13 +37,13 @@
             android:id="@+id/editTextB"
             android:textSize="15pt"
             android:layout_weight="1"
+            android:maxLength="10"
             android:gravity="center"
             android:layout_width="10pt"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:hint="数字②"
             android:text=""/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +91,6 @@
             android:layout_height="wrap_content"
             android:textSize="15pt"
             android:text="÷"/>
-
     </LinearLayout>
 
     <Button
