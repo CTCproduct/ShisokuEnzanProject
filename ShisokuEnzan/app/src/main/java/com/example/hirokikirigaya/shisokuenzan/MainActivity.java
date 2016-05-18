@@ -33,11 +33,6 @@ public class MainActivity extends AppCompatActivity {
     //Edittext内の数値を取得し、結果を表示するクラス
     public class GeneralgetEditText {
 
-        //コンストラクタ
-        public void GeneralgetEditText(){
-
-        }
-
         //Edittext内の数値を取得するメソッド
         public void getEditText(Button btn){
             //どちらかのEditTextに数字が入力されていない場合
@@ -110,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         btnWa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //数値の取得および結果表示 クラス中のメソッドを呼び出す
+                //数値の取得および結果表示
                 generalgetEditText.getEditText(btnWa);
             }
         });
@@ -137,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         btnSh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //数値の取得およぎ結果表示
+                //数値の取得および結果表示
                 generalgetEditText.getEditText(btnSh);
             }
         });
@@ -146,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         btnRe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //リセットボタンをクリックされた時は、EdittextとTextviewの文字をもとに戻す。
+                //リセットボタンをクリックされた時は、EdittextとTextviewの文字をデフォルトに戻す。
                 editTextA.setText("");
                 editTextB.setText("");
                 textViewA.setText("?");
