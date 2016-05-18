@@ -1,80 +1,20 @@
 package com.example.hirokikirigaya.shisokuenzan;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.preference.DialogPreference;
-import android.support.v7.app.AlertDialog;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     //TextViewの宣言
     TextView textViewA,textViewB;
-
     //EditTextの宣言
     EditText editTextA,editTextB;
-
-    //Editacleの宣言
-    Editable editable;
-
-    //格納する変数の宣言
-    private int NumA,NumB;
-
-    //Edittext内の数値を取得し、結果を表示するクラス
-    public class GeneralgetEditText {
-
-        //Edittext内の数値を取得するメソッド
-        public void getEditText(Button btn){
-            //どちらかのEditTextに数字が入力されていない場合
-            if ((editTextA.getText().toString().equals("")) || (editTextB.getText().toString().equals(""))){
-                //数値が入力されていなかった場合、メッセージを表示する
-                Toast.makeText(getApplicationContext(),"数値を入力してください。",Toast.LENGTH_SHORT).show();
-            }
-            //両方のEditTextに数字を入力している場合
-            else{
-                //EditText内の数値を取得
-                editable = editTextA.getText();
-                NumA = Integer.parseInt(editable.toString());
-                editable = editTextB.getText();
-                NumB = Integer.parseInt(editable.toString());
-                textViewA.setText((String)btn.getText().toString());
-
-                //ボタンの文字列に応じて、表示する内容を決める
-                switch ((String)btn.getText().toString()){
-                    //＋ボタンの場合
-                    case "＋":
-                        textViewB.setText("=" + (NumA+NumB) + "です。");
-                        break;
-                    //ーボタンの場合
-                    case "―":
-                        textViewB.setText("=" + (NumA-NumB) + "です。");
-                        break;
-                    //×ボタンの場合
-                    case "×":
-                        textViewB.setText("=" + (NumA*NumB) + "です。");
-                        break;
-                    //÷ボタンの場合
-                    case "÷":
-                        textViewB.setText("=" + (NumA/NumB) + "です。");
-                        break;
-                    //それ以外　※今回は設定していない
-                    default:
-                        break;
-                }
-            }
-        }
-    }
-
     //クラス用の変数を宣言
     private GeneralgetEditText generalgetEditText;
 
@@ -106,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //数値の取得および結果表示
-                generalgetEditText.getEditText(btnWa);
+                ShowResult(btnWa);
             }
         });
 
@@ -115,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //数値の取得および結果表示
-                generalgetEditText.getEditText(btnSa);
+                ShowResult(btnSa);
             }
         });
 
@@ -124,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //数値の取得および結果表示
-                generalgetEditText.getEditText(btnSk);;
+                ShowResult(btnSk);
              }
         });
 
@@ -133,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //数値の取得および結果表示
-                generalgetEditText.getEditText(btnSh);
+                ShowResult(btnSh);
             }
         });
 
@@ -148,6 +88,31 @@ public class MainActivity extends AppCompatActivity {
                 textViewB.setText("=");
             }
         });
+    }
 
+    //入力された数値を取得して、四則演算の結果を表示するメソッド
+    private void ShowResult(final Button btn){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        //数値が正しく入力されていない場合
+                        if (editTextA.getText().toString().equals("") || editTextB.getText().toString().equals("")){
+                            //Toastを表示する
+                            Toast.makeText(getApplicationContext(), "数値を入力してください。", Toast.LENGTH_SHORT).show();
+                        }
+                        //数値が正しく入力されている場合
+                        else{
+                            //数値を取得して、結果を表示するメソッドへ
+                            generalgetEditText.getEditText(btn,editTextA,editTextB,textViewA,textViewB);
+                        }
+                    }
+                });
+            }
+        }).start();
     }
 }
