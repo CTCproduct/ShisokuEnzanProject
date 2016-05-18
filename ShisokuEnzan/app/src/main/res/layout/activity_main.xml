@@ -19,7 +19,7 @@
             android:gravity="center"
             android:layout_width="10pt"
             android:layout_height="wrap_content"
-            android:inputType="phone"
+            android:inputType="numberDecimal"
             android:text=""/>
 
         <TextView
@@ -38,7 +38,7 @@
             android:gravity="center"
             android:layout_width="10pt"
             android:layout_height="wrap_content"
-            android:inputType="phone"
+            android:inputType="numberDecimal"
             android:text=""/>
 
 
