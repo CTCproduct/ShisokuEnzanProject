@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class GeneralgetEditText extends AppCompatActivity {
 
+    TextSizeFit textSizeFit;
+
     //EditText内の数値を取得、結果を表示するメソッド
     public void getEditText(Button btn,EditText edtxta,EditText edtxtb,TextView txtva,TextView txtvb) {
 

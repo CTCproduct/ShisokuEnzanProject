@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextA,editTextB;
     //クラス用の変数を宣言
     private GeneralgetEditText generalgetEditText;
+    //TextSizeFit
+    private TextSizeFit textSizeFit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
